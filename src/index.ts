@@ -31,9 +31,9 @@ app.use(
   }),
 );
 app.use(cookieParser());
-if (process.env.NODE_ENV === "development") {
-  app.use(morgan("dev"));
-}
+
+app.use(morgan(process.env.NODE_ENV === "development" ? "dev" : "combined"));
+
 app.use(dynamicCors);
 
 app.use(router);
